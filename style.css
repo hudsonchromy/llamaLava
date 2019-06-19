@@ -8,6 +8,7 @@ img {
   cursor: grab;
 }
 
+
 button {
   width: 80%;
   background-color: #363636; /* Green */
@@ -35,4 +36,13 @@ h {
   font-size: 70px;
   display: block;
   font-family: 'Roboto Mono', monospace;
+}
+
+@media only screen and (max-width: 1000px) {
+  img {
+    height: 200px;
+  }
+  h {
+    font-size: 40px;
+  }
 }
