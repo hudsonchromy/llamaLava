@@ -23,10 +23,10 @@
     	<h1>Llama or Lava</h1>
         <div class="col-sm-12">
             <div class="col-sm-6">
-                <h id="timer">60</h>
+                <h id="timer">Time</h>
             </div>
             <div class="col-sm-6">
-                <h id="score">0</h>
+                <h id="score">Score</h>
             </div>
         </div>
         <img src="images/start.JPG" id="maybeLlamamaybeLava" onclick="start()">
@@ -36,11 +36,10 @@
             var id;
             var current = "";
             var score = 0;
+            var time;
             function changePicture() {
                 if(typeof id == 'undefined') {
                     start();
-                } else if (id == 'done') {
-                    return;
                 }
                 if (Math.random() < 0.5) { //lama
                     document.getElementById("maybeLlamamaybeLava").src = "images/llama" + Math.ceil(Math.random() *  14) + ".jpg";
@@ -53,15 +52,15 @@
             }
 
             function start() {
-                if (typeof id == 'undefined') {
+                if (typeof id == 'undefined' || id == "done") {
+                    score = 1;
+                    time = 60;
                     id  = setInterval(timer, 1000);
                     changePicture("starting");
-                    score += 1;
                 }
             }
 
             $(document).keypress(function(event){
-                console.log(event.which);
                 if (event.which == 97 ) {
                     clickedChoice("llama");
                 }
@@ -72,14 +71,20 @@
 
 
             function timer() {
-                document.getElementById("timer").innerHTML -= 1;
-                if (document.getElementById("timer").innerHTML == 0) {
+                time-=1;
+                document.getElementById("timer").innerHTML = time;
+                if (time == 0) {
                     clearInterval(id);
                     id = "done";
+                    document.getElementById("maybeLlamamaybeLava").src = "images/start.JPG";
                 }
             }
 
             function clickedChoice(choi) {
+                console.log(id);
+                if (id == 'done') {
+                    return;
+                }
                 if (current == choi) {
                     score += 1;
                 }
@@ -88,7 +93,6 @@
                 }
                 changePicture();
                 document.getElementById("score").innerHTML = score;
-                console.log(score);
             }
 
     		$('body').gradientify({
