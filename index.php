@@ -21,11 +21,11 @@
     </head>
     <body>
     	<h1>Llama or Lava</h1>
-        <div class="col-sm-12">
-            <div class="col-sm-6">
+        <div class="col-xs-12">
+            <div class="col-xs-6">
                 <h id="timer">Time</h>
             </div>
-            <div class="col-sm-6">
+            <div class="col-xs-6">
                 <h id="score">Score</h>
             </div>
         </div>
