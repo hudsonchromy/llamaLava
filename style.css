@@ -45,4 +45,29 @@ h {
   h {
     font-size: 40px;
   }
+  button {
+    width: 49%;
+    margin: 0;
+    display: inline-block;
+    margin-right: auto;
+    margin-left: auto;
+    height: 120px;
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
