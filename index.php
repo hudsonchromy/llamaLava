@@ -53,9 +53,11 @@
             }
 
             function start() {
-                id  = setInterval(timer, 1000);
-                changePicture("starting");
-                score += 1;
+                if (typeof id == 'undefined') {
+                    id  = setInterval(timer, 1000);
+                    changePicture("starting");
+                    score += 1;
+                }
             }
 
             $(document).keypress(function(event){
