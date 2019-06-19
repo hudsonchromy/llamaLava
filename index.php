@@ -29,7 +29,7 @@
                 <h id="score">0</h>
             </div>
         </div>
-        <img src="images/start.jpg" id="maybeLlamamaybeLava" onclick="start()">
+        <img src="images/start.JPG" id="maybeLlamamaybeLava" onclick="start()">
         <button onclick="clickedChoice('llama')">Llama (A)</button>
         <button onclick="clickedChoice('lava')">Lava (L)</button>
     	<script>
