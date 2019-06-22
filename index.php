@@ -20,18 +20,36 @@
    crossorigin=""></script>
     </head>
     <body>
-    	<h1>Llama or Lava</h1>
-        <div class="col-xs-12">
-            <div class="col-xs-6">
-                <h id="timer">Time</h>
+        <div class="col-sm-12">
+            <div class="col-sm-9">
+                <h1>Llama or Lava</h1>
+                <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <h id="timer">Time</h>
+                    </div>
+                    <div class="col-xs-6">
+                        <h id="score">Score</h>
+                    </div>
+                </div>
+                <img src="images/start.JPG" id="maybeLlamamaybeLava" onclick="start()">
+                <button onclick="clickedChoice('llama')">Llama (A)</button>
+                <button onclick="clickedChoice('lava')">Lava (L)</button>
             </div>
-            <div class="col-xs-6">
-                <h id="score">Score</h>
+            <div class="col-sm-3">
+                <div id="scores">
+                    <h2>High Scores</h2>
+                    <?php include('highscores.php')?>
+                </div id="enter">
+                    <h2>Enter Score</h2>
+                    <form id="scoreSubmit"action="index.php" method="post">
+                        <input type="text" name="initials">
+                        <button type="submit" name="submit" class="btn">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <img src="images/start.JPG" id="maybeLlamamaybeLava" onclick="start()">
-        <button onclick="clickedChoice('llama')">Llama (A)</button>
-        <button onclick="clickedChoice('lava')">Lava (L)</button>
+
+
     	<script>
             var id;
             var current = "";
@@ -77,6 +95,7 @@
                     clearInterval(id);
                     id = "done";
                     document.getElementById("maybeLlamamaybeLava").src = "images/start.JPG";
+                    document.getElementById("scoreSubmit").action = "index.php?score=" + score;
                 }
             }
 
