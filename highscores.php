@@ -7,7 +7,7 @@
 
 
 
-	$query = "SELECT * FROM scores ORDER BY score DESC LIMIT 5";
+	$query = "SELECT * FROM LlamaLava ORDER BY score DESC LIMIT 5";
 	$results = mysqli_query($db, $query);
 	if ($results->num_rows > 0) {
 		while($row = $results->fetch_assoc()) {
@@ -22,7 +22,7 @@
 	$sc = $_GET["LlamaLava"];
 	$s = $sc;
 	if (isset($_POST['submit']) && !empty($initials)) {
-		$sql = "INSERT INTO scores (score, initials) VALUES ($s, '$initials')";
+		$sql = "INSERT INTO LlamaLava (score, initials) VALUES ($s, '$initials')";
 		$result = mysqli_query($db, $sql);
 		if ($result) {
 			echo "$sql";
