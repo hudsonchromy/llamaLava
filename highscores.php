@@ -3,7 +3,7 @@
 	$score = "";
 	$errors = array();
 
-	$db = mysqli_connect('mysql://bddc45f25fedbd:23c2eedf@us-cdbr-iron-east-02.cleardb.net/heroku_7291367ba0c4da0?reconnect=true', 'root', '12345', 'lavaLlama');
+	$db = mysqli_connect('127.0.0.1', 'root', '12345', 'lavaLlama');
 	$query = "SELECT * FROM scores ORDER BY score DESC LIMIT 5";
 	$results = mysqli_query($db, $query);
 	if ($results->num_rows > 0) {
