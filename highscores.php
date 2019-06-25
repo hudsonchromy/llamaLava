@@ -25,7 +25,7 @@
 	$sc = $_GET["score"];
 	$s = $sc;
 	if (isset($_POST['submit']) && !empty($initials)) {
-		$sql = "INSERT INTO LlamaLava (score, initials) VALUES (16, '$initials')";
+		$sql = "INSERT INTO LlamaLava (score, initials) VALUES ($s, '$initials')";
 		$result = mysqli_query($db, $sql);
 		// if ($result) {
 		// 	echo "$sql";
