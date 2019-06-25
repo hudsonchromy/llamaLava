@@ -3,7 +3,10 @@
 	$score = "";
 	$errors = array();
 
-	$db = mysqli_connect('127.0.0.1', 'root', '12345', 'lavaLlama');
+	$db = mysqli_connect('us-cdbr-iron-east-02.cleardb.net', 'bcd2f7930ec787', '06fbf25c');
+
+
+
 	$query = "SELECT * FROM scores ORDER BY score DESC LIMIT 5";
 	$results = mysqli_query($db, $query);
 	if ($results->num_rows > 0) {
@@ -13,9 +16,10 @@
 	}
 	else {
 		echo "No Records";
+		echo "</br>";
 	}
 	$initials = mysqli_real_escape_string($db, $_POST['initials']);
-	$sc = $_GET["score"];
+	$sc = $_GET["LlamaLava"];
 	$s = $sc;
 	if (isset($_POST['submit']) && !empty($initials)) {
 		$sql = "INSERT INTO scores (score, initials) VALUES ($s, '$initials')";
@@ -29,6 +33,8 @@
 			echo "$sql";
 			echo "</br>";
 			echo "Failure";
+			echo "</br>";
+			echo "$result";
 		}
 	}
 ?>
