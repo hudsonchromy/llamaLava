@@ -41,10 +41,11 @@
                     <?php include('highscores.php')?>
                 </div id="enter">
                     <h2>Enter Score</h2>
-                    <form id="scoreSubmit"action="index.php" method="post">
-                        <input type="text" name="initials">
-                        <button type="submit" name="submit" class="btn">Submit</button>
+                    <form name="ScoreForm" id="scoreSubmit">
+                        <input onchange="changeInitals()" type="text" name="initials">
                     </form>
+                        <button onclick="submitScore()" class="btn">Submit</button>
+
                 </div>
             </div>
         </div>
@@ -55,8 +56,9 @@
             var current = "";
             var score = 0;
             var time;
+            var mode = "done"; // done, done-submit, during
             function changePicture() {
-                if(typeof id == 'undefined') {
+                if(mode.substring(0, 4) == 'done') {
                     start();
                 }
                 if (Math.random() < 0.5) { //lama
@@ -70,7 +72,8 @@
             }
 
             function start() {
-                if (typeof id == 'undefined' || id == "done") {
+                if (mode.substring(0, 4) == "done") {
+                    mode = 'during';
                     score = 1;
                     time = 60;
                     id  = setInterval(timer, 1000);
@@ -80,6 +83,7 @@
 
             $(document).keypress(function(event){
                 if (event.which == 97 ) {
+                    console.log("llama");
                     clickedChoice("llama");
                 }
                 else if (event.which == 108 ) {
@@ -93,15 +97,14 @@
                 document.getElementById("timer").innerHTML = time;
                 if (time == 0) {
                     clearInterval(id);
-                    id = "done";
+                    mode = "done";
                     document.getElementById("maybeLlamamaybeLava").src = "images/start.JPG";
                     document.getElementById("scoreSubmit").action = "index.php?score=" + score;
                 }
             }
 
             function clickedChoice(choi) {
-                console.log(id);
-                if (id == 'done') {
+                if (mode.substring(0, 4) == 'done') {
                     return;
                 }
                 if (current == choi) {
@@ -120,6 +123,41 @@
 			        { start: [255, 255, 204], stop: [204, 51, 0] }
 			    ]
 			});
+
+            let initials;
+            function changeInitals() {
+                initials = document.forms["ScoreForm"]["initials"].value;
+            }
+            function submitScore() {
+                if (mode == 'done-submit') {
+                    return;
+                }
+                mode = 'done-submit';
+                console.log(initials);
+                var xhttp; 
+                xhttp = new XMLHttpRequest();
+                xhttp.open("GET", "highscores.php?score=" + score + "&&initials=" + initials, true);
+                xhttp.send();
+            }
+
     	</script>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
