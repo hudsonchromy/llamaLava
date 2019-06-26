@@ -21,10 +21,10 @@
 		echo "No Records";
 		echo "</br>";
 	}
-	$initials = mysqli_real_escape_string($db, $_POST['initials']);
+	$initials = $_GET["initials"];
 	$sc = $_GET["score"];
 	$s = $sc;
-	if (isset($_POST['submit']) && !empty($initials)) {
+	if (!empty($initials) && !empty($initials)) {
 		$sql = "INSERT INTO LlamaLava (score, initials) VALUES ($s, '$initials')";
 		$result = mysqli_query($db, $sql);
 		// if ($result) {
